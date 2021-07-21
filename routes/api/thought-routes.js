@@ -13,7 +13,7 @@ const {
 // get all thoughts
 // add thought
 router
-    .router('/')
+    .route('/')
     .get(getAllThoughts)
     .post(addThought);
 
@@ -22,7 +22,7 @@ router
 // update thought
 // delete thought
 router
-    .router('/')
+    .route('/')
     .get(getThoughtById)
     .put(updateThought)
     .delete(removeThought);
@@ -30,13 +30,13 @@ router
 // /api/thoughts/<thought_id>/reactions
 // add reaction
 router
-    .router('/:thoughtId/reactions')
+    .route('/:thoughtId/reactions')
     .post(addReaction);
 
 // /api/thoughts/<thought_id>/reactions/<reaction_id>
 // remove reaction
 router
-    .router('/:thoughtId/reactions/:reactionId')
+    .route('/:thoughtId/reactions/:reactionId')
     .delete(removeReaction);
 
-module.reports = router;
+module.exports = router;
