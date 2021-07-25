@@ -8,10 +8,7 @@ const userController = {
             .select('-__v')
             .sort({_id: -1})
             .then(dbUserData => res.json(dbUserData))
-            .catch(err => {
-                console.log(err);
-                res.status(400).json(err);
-            });
+            .catch(err => res.status(400).json({message: err.message}));
     },
 
     // get user by id
@@ -33,17 +30,15 @@ const userController = {
                 }
                 res.json(dbUserData);
             })
-            .catch(err => {
-                console.log(err);
-                res.status(400).json(err);
-            })
+            .catch(err => res.status(400).json({message: err.message}));
+            
     },
 
     // create user
     createUser({body}, res) {
         User.create(body)
             .then(dbUserData => res.json(dbUserData))
-            .catch(err => res.status(400).json(err));
+            .catch(err => res.status(400).json({message: err.message}));
     },
 
     // update user
@@ -60,7 +55,7 @@ const userController = {
                 }
                 res.json(dbUserData);
             })
-            .catch(err => res.status(400).json(err));
+            .catch(err => res.status(400).json({message: err.message}));
     },
 
     // delete user
@@ -83,7 +78,7 @@ const userController = {
                 }
                 res.json(dbUserData);
             })
-            .catch(err => res.status(400).json(err));
+            .catch(err => res.status(400).json({message: err.message}));
     },
 
     // add friend
@@ -101,6 +96,7 @@ const userController = {
                 }
                 res.json(dbUserData);
             })
+            .catch(err => res.status(400).json({message: err.message}));
     },
 
     // remove friend
@@ -118,7 +114,7 @@ const userController = {
                 }
                 res.json(dbUserData);
             })
-            .catch(err => res.json(err));
+            .catch(err => res.status(400).json({message: err.message}));
     }
     
 }
